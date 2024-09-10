@@ -118,20 +118,38 @@ void StreetList::setup(){
     inFile.close();
 }
 
-//Prints the entire list
+//Prints the entire list in a map format
 void StreetList::printList(){
     streetNode* nodePtr = headPtr;
     int counter = 0;
-    while (nodePtr->nextNode != nullptr){
 
-        if (nodePtr->treeAmount >= 0){
-
-            cout << counter + 1 << ". Between " << nodePtr->nsStreet << " and ";
-            cout << nodePtr->nextNode->nsStreet << " on " << nodePtr->weStreet << ".\n";
+   for(int i = 0; i < 6; i++){
+    cout << "|| ";
+    for (int j = 0; j < 8; j++){
+        if ((i == 2) && (j == 4)){
+            cout << " \t|| ";
         }
-        counter++;
-        nodePtr = nodePtr->nextNode;
+        else {
+            cout << counter + 1 << ".";
+            cout << "\t|| ";
+            if (counter < 10){
+                cout << " ";
+            }
+
+            counter++;
+            nodePtr = nodePtr->nextNode;
+        }
     }
+    if (i == 2) cout << '\n' << "=================================        =========================";
+    else cout << '\n' << "==================================================================";
+    if (i == 0) cout << " E Indiana Ave \n";
+    if (i == 1) cout << " E Nora Ave \n";
+    if (i == 2) cout << " E Augusta Ave \n";
+    if (i == 3) cout << " E Mission Ave \n";
+    if (i == 4) cout << " E Sinto Ave\n";
+    if (i == 5) cout << " E Sharp Ave\n";
+   }
+
     cout << endl;
     validStreetCount = counter;
 }
@@ -158,7 +176,7 @@ void StreetList::interactiveTraversal() {
         int num = 0;
         bool loop = true;
         while (loop == true){
-            cout << "Enter street number:\n";
+            cout << "Enter street block number:\n";
             cin >> num;
             if (num < 1 or num > validStreetCount) {
                 cout << "Invalid number" << endl;
