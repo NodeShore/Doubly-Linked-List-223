@@ -1,3 +1,11 @@
+/*
+Charlie Wyman, Thomas Domser, Parker Shore, Gavin Tate
+CPSC223 Doubly Linked Lists Project
+
+This program will allow the user to navigate through a linked list of street blocks,
+and will display the amount of trees on each block.
+*/
+
 #include "linked_list.hpp"
 #include "linked_list.cpp"
 
